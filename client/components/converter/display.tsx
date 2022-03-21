@@ -26,6 +26,8 @@ export interface displayProps {
   ) => (event: ChangeEvent<HTMLInputElement>) => void;
   primaryField: string;
   secondaryField: string;
+  primaryCurrency: string;
+  secondaryCurrency: string;
 }
 
 export interface DisplayProps {
@@ -33,7 +35,13 @@ export interface DisplayProps {
 }
 
 const Display = ({ displayProps }: DisplayProps) => {
-  const { handleChange, primaryField, secondaryField } = displayProps;
+  const {
+    handleChange,
+    primaryField,
+    secondaryField,
+    primaryCurrency,
+    secondaryCurrency,
+  } = displayProps;
 
   return (
     <div className="flex flex-col">
@@ -44,7 +52,7 @@ const Display = ({ displayProps }: DisplayProps) => {
         >
           <div className="relative flex items-center p-[5px] w-full">
             <Typography variant="h6" className="text-[gray]">
-              {item?.label?.toUpperCase()}
+              {item.name === "primary" ? primaryCurrency : secondaryCurrency}
             </Typography>
           </div>
           <div className="relative flex w-full justify-end pl-[2px]">

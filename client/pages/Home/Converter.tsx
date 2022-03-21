@@ -6,13 +6,19 @@ import Converter from "../../components/converter";
 import { ChangeEvent } from "react";
 
 const Home: NextPage = () => {
+  const dispatch = useDispatch();
   const primaryField = useSelector(
     (state: RootState) => state?.home?.primaryField
   );
   const secondaryField = useSelector(
     (state: RootState) => state?.home?.secondaryField
   );
-  const dispatch = useDispatch();
+  const primaryCurrency = useSelector(
+    (state: RootState) => state?.home?.primaryCurrency
+  );
+  const secondaryCurrency = useSelector(
+    (state: RootState) => state?.home?.secondaryCurrency
+  );
 
   const handleChange =
     (label: "primary" | "secondary") =>
@@ -25,7 +31,13 @@ const Home: NextPage = () => {
       }
     };
 
-  const displayProps = { handleChange, primaryField, secondaryField };
+  const displayProps = {
+    handleChange,
+    primaryField,
+    secondaryField,
+    primaryCurrency,
+    secondaryCurrency,
+  };
 
   return <Converter displayProps={displayProps} />;
 };

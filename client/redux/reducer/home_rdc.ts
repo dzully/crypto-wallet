@@ -3,11 +3,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface HomeState {
   primaryField: string;
   secondaryField: string;
+  primaryCurrency: string;
+  secondaryCurrency: string;
 }
 
 const initialState: HomeState = {
   primaryField: "",
   secondaryField: "",
+  primaryCurrency: "NEP",
+  secondaryCurrency: "BUSD",
 };
 
 export const homeSlice = createSlice({
@@ -20,8 +24,19 @@ export const homeSlice = createSlice({
     handleSecondaryField: (state, action: PayloadAction<string>) => {
       state.secondaryField = action.payload;
     },
+    handlePrimaryCurrency: (state, action: PayloadAction<string>) => {
+      state.primaryCurrency = action.payload;
+    },
+    handleSecondaryCurrency: (state, action: PayloadAction<string>) => {
+      state.secondaryCurrency = action.payload;
+    },
   },
 });
 
-export const { handlePrimaryField, handleSecondaryField } = homeSlice.actions;
+export const {
+  handlePrimaryField,
+  handleSecondaryField,
+  handlePrimaryCurrency,
+  handleSecondaryCurrency,
+} = homeSlice.actions;
 export default homeSlice.reducer;
