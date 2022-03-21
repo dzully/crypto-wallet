@@ -18,6 +18,7 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/redux/*": ["redux/*"],
+      "@/utils/*": ["utils/*"],
       "@/reducer/*": ["redux/reducer/*"],
       "@/pages/*": ["pages/*"],
       "@/styles/*": ["styles/*"]

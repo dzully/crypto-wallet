@@ -18,11 +18,12 @@ export const homeSlice = createSlice({
   name: "authentication",
   initialState,
   reducers: {
-    handlePrimaryField: (state, action: PayloadAction<string>) => {
-      state.primaryField = action.payload;
-    },
-    handleSecondaryField: (state, action: PayloadAction<string>) => {
-      state.secondaryField = action.payload;
+    handleConverter: (
+      state,
+      action: PayloadAction<{ [key: string]: string }>
+    ) => {
+      state.primaryField = action.payload?.initial;
+      state.secondaryField = action.payload?.next;
     },
     handlePrimaryCurrency: (state, action: PayloadAction<string>) => {
       state.primaryCurrency = action.payload;
@@ -34,9 +35,8 @@ export const homeSlice = createSlice({
 });
 
 export const {
+  handleConverter,
   handlePrimaryCurrency,
-  handlePrimaryField,
   handleSecondaryCurrency,
-  handleSecondaryField,
 } = homeSlice.actions;
 export default homeSlice.reducer;

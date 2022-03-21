@@ -10,7 +10,8 @@ export interface ConverterProps {
 
 export interface displayProps {
   handleChange: (
-    label: "primary" | "secondary"
+    label: string,
+    key: number
   ) => (event: ChangeEvent<HTMLInputElement>) => void;
   listTextField: listTextFieldProps[];
   primaryCurrency: string;
