@@ -4,13 +4,8 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import CardHeader from "@mui/material/CardHeader";
 import startCase from "lodash/startCase";
-import Display, { displayProps } from "./display";
-
-interface ConverterProps {
-  cardHeaderTitle?: string;
-  cardHeaderSubheader?: string;
-  displayProps: displayProps;
-}
+import Display from "./display";
+import { ConverterProps } from "@/components/converter/types";
 
 export const capitalizeFirstLetter = (param: string) => {
   return param.charAt(0).toUpperCase() + param.slice(1);

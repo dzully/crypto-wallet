@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux/store";
 import Converter from "../../components/converter";
 import { ChangeEvent } from "react";
+import { listTextField } from "@/pages/Home/utils";
 
 const Home: NextPage = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const Home: NextPage = () => {
     secondaryField,
     primaryCurrency,
     secondaryCurrency,
+    listTextField,
   };
 
   return <Converter displayProps={displayProps} />;

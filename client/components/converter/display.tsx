@@ -1,38 +1,6 @@
-import { ChangeEvent } from "react";
 import Typography from "@mui/material/Typography";
-
-interface listTextfieldProps {
-  id: string;
-  label: string;
-  name: "primary" | "secondary";
-}
-
-const listTextfield: listTextfieldProps[] = [
-  {
-    id: "outlined-primary",
-    label: "primary",
-    name: "primary",
-  },
-  {
-    id: "outlined-secondary",
-    label: "secondary",
-    name: "secondary",
-  },
-];
-
-export interface displayProps {
-  handleChange: (
-    label: "primary" | "secondary"
-  ) => (event: ChangeEvent<HTMLInputElement>) => void;
-  primaryField: string;
-  secondaryField: string;
-  primaryCurrency: string;
-  secondaryCurrency: string;
-}
-
-export interface DisplayProps {
-  displayProps: displayProps;
-}
+import { DisplayProps } from "@/components/converter/types";
+import { listTextFieldProps } from "@/pages/Home/types";
 
 const Display = ({ displayProps }: DisplayProps) => {
   const {
@@ -41,11 +9,12 @@ const Display = ({ displayProps }: DisplayProps) => {
     secondaryField,
     primaryCurrency,
     secondaryCurrency,
+    listTextField,
   } = displayProps;
 
   return (
     <div className="flex flex-col">
-      {listTextfield?.map((item: listTextfieldProps, key: number) => (
+      {listTextField?.map((item: listTextFieldProps, key: number) => (
         <div
           key={key.toString()}
           className="relative flex flex-col border border-solid rounded border-gainsboro mb-1 h-full"
