@@ -12,7 +12,11 @@ const Header = ({
 }: HeaderProps) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar elevation={0} position="static">
+      <AppBar
+        elevation={0}
+        position="static"
+        className="flex justify-center items-center"
+      >
         <Toolbar>
           {imageSrc ? (
             <div className="mr-2 flex">

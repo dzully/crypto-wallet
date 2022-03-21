@@ -15,10 +15,11 @@ const Converter = ({
   cardHeaderTitle = "crypto converter",
   cardHeaderSubheader = "convert prices online between two currencies in real-time",
   displayProps,
+  cardWidth = 500,
 }: ConverterProps) => {
   return (
     <div className="relative flex h-full items-center justify-center">
-      <Card sx={{ minWidth: 275 }}>
+      <Card sx={{ width: cardWidth }}>
         <CardHeader
           title={startCase(cardHeaderTitle?.toLowerCase())}
           subheader={capitalizeFirstLetter(cardHeaderSubheader)}

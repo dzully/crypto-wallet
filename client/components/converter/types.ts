@@ -5,6 +5,7 @@ export interface ConverterProps {
   cardHeaderTitle?: string;
   cardHeaderSubheader?: string;
   displayProps: displayProps;
+  cardWidth?: number;
 }
 
 export interface displayProps {

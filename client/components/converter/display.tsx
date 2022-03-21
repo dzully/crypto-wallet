@@ -26,7 +26,7 @@ const Display = ({ displayProps }: DisplayProps) => {
           </div>
           <div className="relative flex w-full justify-end pl-[2px]">
             <input
-              className="text-[80px] outline-0 h-[100px]"
+              className="text-[80px] outline-0 h-[100px] w-full"
               id={item.id}
               name={item.name}
               onChange={handleChange(item.name)}
