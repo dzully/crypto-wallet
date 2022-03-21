@@ -1,6 +1,3 @@
-import { RootState } from "@/redux/store";
-import { useSelector, useDispatch } from "react-redux";
-import { handlePrimaryField, handleSecondaryField } from "@/reducer/home_rdc";
 import { ChangeEvent } from "react";
 import Typography from "@mui/material/Typography";
 
@@ -23,25 +20,20 @@ const listTextfield: listTextfieldProps[] = [
   },
 ];
 
-const Display = () => {
-  const primaryField = useSelector(
-    (state: RootState) => state?.home?.primaryField
-  );
-  const secondaryField = useSelector(
-    (state: RootState) => state?.home?.secondaryField
-  );
-  const dispatch = useDispatch();
+export interface displayProps {
+  handleChange: (
+    label: "primary" | "secondary"
+  ) => (event: ChangeEvent<HTMLInputElement>) => void;
+  primaryField: string;
+  secondaryField: string;
+}
 
-  const handleChange =
-    (label: "primary" | "secondary") =>
-    (event: ChangeEvent<HTMLInputElement>) => {
-      const value: string = event.target.value;
-      if (label === "primary") {
-        dispatch(handlePrimaryField(value));
-      } else if (label === "secondary") {
-        dispatch(handleSecondaryField(value));
-      }
-    };
+export interface DisplayProps {
+  displayProps: displayProps;
+}
+
+const Display = ({ displayProps }: DisplayProps) => {
+  const { handleChange, primaryField, secondaryField } = displayProps;
 
   return (
     <div className="flex flex-col">

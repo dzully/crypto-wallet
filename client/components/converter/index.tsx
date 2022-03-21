@@ -4,11 +4,12 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import CardHeader from "@mui/material/CardHeader";
 import startCase from "lodash/startCase";
-import Display from "./display";
+import Display, { displayProps } from "./display";
 
 interface ConverterProps {
   cardHeaderTitle?: string;
   cardHeaderSubheader?: string;
+  displayProps: displayProps;
 }
 
 export const capitalizeFirstLetter = (param: string) => {
@@ -18,6 +19,7 @@ export const capitalizeFirstLetter = (param: string) => {
 const Converter = ({
   cardHeaderTitle = "crypto converter",
   cardHeaderSubheader = "convert prices online between two currencies in real-time",
+  displayProps,
 }: ConverterProps) => {
   return (
     <div className="relative flex h-full items-center justify-center">
@@ -27,7 +29,7 @@ const Converter = ({
           subheader={capitalizeFirstLetter(cardHeaderSubheader)}
         />
         <CardContent>
-          <Display />
+          <Display displayProps={displayProps} />
         </CardContent>
       </Card>
     </div>

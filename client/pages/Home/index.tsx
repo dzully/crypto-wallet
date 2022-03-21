@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import Header from "../components/header";
-import Converter from "../components/converter";
+import Header from "../../components/header";
+import Converter from "./Converter";
 
 const Home: NextPage = () => {
   return (
