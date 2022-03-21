@@ -5,11 +5,11 @@ import { listTextFieldProps } from "@/pages/Home/types";
 const Display = ({ displayProps }: DisplayProps) => {
   const {
     handleChange,
-    primaryField,
-    secondaryField,
-    primaryCurrency,
-    secondaryCurrency,
     listTextField,
+    primaryCurrency,
+    primaryField,
+    secondaryCurrency,
+    secondaryField,
   } = displayProps;
 
   return (

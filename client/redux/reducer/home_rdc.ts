@@ -1,17 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface HomeState {
-  primaryField: string;
-  secondaryField: string;
   primaryCurrency: string;
+  primaryField: string;
   secondaryCurrency: string;
+  secondaryField: string;
 }
 
 const initialState: HomeState = {
-  primaryField: "",
-  secondaryField: "",
   primaryCurrency: "NEP",
+  primaryField: "",
   secondaryCurrency: "BUSD",
+  secondaryField: "",
 };
 
 export const homeSlice = createSlice({
@@ -34,9 +34,9 @@ export const homeSlice = createSlice({
 });
 
 export const {
-  handlePrimaryField,
-  handleSecondaryField,
   handlePrimaryCurrency,
+  handlePrimaryField,
   handleSecondaryCurrency,
+  handleSecondaryField,
 } = homeSlice.actions;
 export default homeSlice.reducer;

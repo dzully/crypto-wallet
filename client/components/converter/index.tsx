@@ -12,24 +12,22 @@ export const capitalizeFirstLetter = (param: string) => {
 };
 
 const Converter = ({
-  cardHeaderTitle = "crypto converter",
   cardHeaderSubheader = "convert prices online between two currencies in real-time",
-  displayProps,
+  cardHeaderTitle = "crypto converter",
   cardWidth = 500,
-}: ConverterProps) => {
-  return (
-    <div className="relative flex h-full items-center justify-center">
-      <Card sx={{ width: cardWidth }}>
-        <CardHeader
-          title={startCase(cardHeaderTitle?.toLowerCase())}
-          subheader={capitalizeFirstLetter(cardHeaderSubheader)}
-        />
-        <CardContent>
-          <Display displayProps={displayProps} />
-        </CardContent>
-      </Card>
-    </div>
-  );
-};
+  displayProps,
+}: ConverterProps) => (
+  <div className="relative flex h-full items-center justify-center">
+    <Card sx={{ width: cardWidth }}>
+      <CardHeader
+        title={startCase(cardHeaderTitle?.toLowerCase())}
+        subheader={capitalizeFirstLetter(cardHeaderSubheader)}
+      />
+      <CardContent>
+        <Display displayProps={displayProps} />
+      </CardContent>
+    </Card>
+  </div>
+);
 
 export default Converter;
