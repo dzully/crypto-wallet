@@ -1,5 +1,5 @@
 import ConnectorComponent from "@/components/converter/Connector";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
@@ -7,35 +7,55 @@ import {
   handleAccount,
   handleBalance,
   handleChainId,
+  handleProvider,
 } from "@/redux/reducer/wallet";
+import Popper from "@/components/Popper";
+import { popupProps } from "@/components/types";
 
 const Connector = () => {
+  const [popup, setPopup] = useState<popupProps>({
+    message: "",
+    severity: "info",
+    status: false,
+  });
+
   const dispatch = useDispatch();
   const walletState = useSelector((state: RootState) => state?.wallet);
   const account = walletState?.account;
   const balance = walletState?.balance;
   const chainId = walletState?.chainId;
+  const provider = walletState?.provider;
 
   const [errorMessage, setErrorMessage] = useState<any>(null);
-  const [provider, setProvider] = useState<any>(null);
   console.log({ account });
   console.log({ balance });
   console.log({ chainId });
+  console.log({ provider });
 
-  const connectWalletHandler = () => {
+  const connectWalletHandler = useCallback(() => {
     // @ts-ignore
     if (window.ethereum && !account) {
       // @ts-ignore
-      setProvider(new ethers.providers.Web3Provider(window.ethereum));
+      const getProvider = new ethers.providers.Web3Provider(window.ethereum);
+      dispatch(handleProvider(getProvider));
 
       // @ts-ignore
       window.ethereum
         .request({ method: "eth_requestAccounts" })
         .then((result: any) => {
           dispatch(handleAccount(result.at(0)));
+          setPopup({
+            severity: "success",
+            status: true,
+            message: "Successfully connected to Wallet",
+          });
         })
         .catch((error: any) => {
-          setErrorMessage(error.message);
+          setPopup({
+            severity: "error",
+            status: true,
+            message: error.message,
+          });
         });
 
       // @ts-ignore
@@ -45,15 +65,22 @@ const Connector = () => {
           dispatch(handleChainId(result));
         })
         .catch((error: any) => {
-          setErrorMessage(error.message);
+          setPopup({
+            severity: "error",
+            status: true,
+            message: error.message,
+          });
         });
 
       // @ts-ignore
     } else if (!window.ethereum) {
-      console.log("Need to install MetaMask");
-      setErrorMessage("Please install MetaMask browser extension to interact");
+      setPopup({
+        severity: "error",
+        status: true,
+        message: "Please install MetaMask browser extension to interact",
+      });
     }
-  };
+  }, [account, dispatch]);
 
   useEffect(() => {
     if (account && provider) {
@@ -64,7 +91,23 @@ const Connector = () => {
     }
   }, [account, dispatch, provider]);
 
-  return <ConnectorComponent handleClick={connectWalletHandler} />;
+  const handleCancel = () => {
+    console.log("handleCancel");
+  };
+
+  const handlePopup = () => {
+    setPopup({ ...popup, status: false });
+  };
+
+  return (
+    <>
+      <ConnectorComponent
+        handleClick={connectWalletHandler}
+        handleCancel={handleCancel}
+      />
+      <Popper popup={popup} handlePopup={handlePopup} />
+    </>
+  );
 };
 
 export default Connector;

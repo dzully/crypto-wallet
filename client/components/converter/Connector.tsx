@@ -2,8 +2,10 @@ import { ConnectorProps } from "@/components/converter/types";
 import Button from "@mui/material/Button";
 
 const Connector = ({
-  title = "check wallet details",
+  primaryTitle = "connect",
+  secondaryTitle = "cancel",
   handleClick,
+  handleCancel,
 }: ConnectorProps) => (
   <div className="flex relative">
     <Button
@@ -13,7 +15,11 @@ const Connector = ({
       color="primary"
       onClick={handleClick}
     >
-      {title}
+      {primaryTitle}
+    </Button>
+    <div className="m-1" />
+    <Button fullWidth variant="outlined" color="primary" onClick={handleCancel}>
+      {secondaryTitle}
     </Button>
   </div>
 );

@@ -7,6 +7,10 @@ export const store = configureStore({
     converter: converterReducers,
     wallet: walletReducers,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

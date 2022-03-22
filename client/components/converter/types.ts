@@ -2,8 +2,10 @@ import { listTextFieldProps } from "@/pages/home/types";
 import React, { ChangeEvent, MouseEventHandler } from "react";
 
 export interface ConnectorProps {
-  title?: string;
+  primaryTitle?: string;
+  secondaryTitle?: string;
   handleClick: MouseEventHandler<HTMLButtonElement>;
+  handleCancel: MouseEventHandler<HTMLButtonElement>;
 }
 
 export interface ViewerProps {
