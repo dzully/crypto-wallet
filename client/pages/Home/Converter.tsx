@@ -6,7 +6,6 @@ import Converter from "../../components/converter";
 import { ChangeEvent, useCallback } from "react";
 import { listTextField } from "@/pages/Home/utils";
 import { formula, validate } from "@/utils/customFunction";
-import debounce from "lodash/debounce";
 
 const Home: NextPage = () => {
   const dispatch = useDispatch();
