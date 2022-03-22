@@ -1,14 +1,19 @@
-import { listTextFieldProps } from "@/pages/Home/types";
-import { ChangeEvent } from "react";
+import { listTextFieldProps } from "@/pages/home/types";
+import React, { ChangeEvent, MouseEventHandler } from "react";
 
-export interface ConverterProps {
+export interface ConnectorProps {
+  title?: string;
+  handleClick: MouseEventHandler<HTMLButtonElement>;
+}
+
+export interface ViewerProps {
   cardHeaderSubheader?: string;
   cardHeaderTitle?: string;
   cardWidth?: number;
-  displayProps: displayProps;
+  children?: React.ReactChild;
 }
 
-export interface displayProps {
+export interface DisplayProps {
   handleChange: (
     label: string,
     key: number
@@ -18,8 +23,4 @@ export interface displayProps {
   primaryField: string;
   secondaryCurrency: string;
   secondaryField: string;
-}
-
-export interface DisplayProps {
-  displayProps: displayProps;
 }

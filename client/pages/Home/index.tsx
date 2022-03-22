@@ -1,13 +1,18 @@
+import Viewer from "@/components/converter/Viewer";
+import Header from "@/components/header";
+import Connector from "@/container/home/Connector";
+import Display from "@/container/home/Display";
 import type { NextPage } from "next";
-import Header from "../../components/header";
-import Converter from "./Converter";
 
 const Home: NextPage = () => (
   <div className="relative flex flex-col w-full">
     <Header />
-    <div className="h-full">
-      <Converter />
-    </div>
+    <Viewer>
+      <>
+        <Display />
+        <Connector />
+      </>
+    </Viewer>
   </div>
 );
 

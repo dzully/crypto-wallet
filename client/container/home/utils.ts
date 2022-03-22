@@ -1,4 +1,4 @@
-import { listTextFieldProps, useCaseProps } from "@/pages/Home/types";
+import { listTextFieldProps } from "@/pages/home/types";
 
 export const listTextField: listTextFieldProps[] = [
   {

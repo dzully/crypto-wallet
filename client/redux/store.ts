@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import homeReducers from "./reducer/home_rdc";
+import converterReducers from "./reducer/converter";
+import walletReducers from "./reducer/wallet";
 
 export const store = configureStore({
   reducer: {
-    home: homeReducers,
+    converter: converterReducers,
+    wallet: walletReducers,
   },
 });
 

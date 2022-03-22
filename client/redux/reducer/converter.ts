@@ -1,21 +1,21 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface HomeState {
+export interface ConverterProps {
   primaryCurrency: string;
   primaryField: string;
   secondaryCurrency: string;
   secondaryField: string;
 }
 
-const initialState: HomeState = {
+const initialState: ConverterProps = {
   primaryCurrency: "NEP",
   primaryField: "",
   secondaryCurrency: "BUSD",
   secondaryField: "",
 };
 
-export const homeSlice = createSlice({
-  name: "authentication",
+export const converterSlice = createSlice({
+  name: "converter",
   initialState,
   reducers: {
     handleConverter: (
@@ -38,5 +38,5 @@ export const {
   handleConverter,
   handlePrimaryCurrency,
   handleSecondaryCurrency,
-} = homeSlice.actions;
-export default homeSlice.reducer;
+} = converterSlice.actions;
+export default converterSlice.reducer;
