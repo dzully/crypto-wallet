@@ -13,8 +13,11 @@ import Popper from "@/components/Popper";
 import { popupProps } from "@/components/types";
 import { ConnectorProps } from "@/container/wallet/types";
 
-const Connector = ({ handleCancel }: ConnectorProps) => {
-  const [loading, setLoading] = useState<boolean>(false);
+const Connector = ({
+  handleCancel,
+  handleLoading,
+  loading,
+}: ConnectorProps) => {
   const [popup, setPopup] = useState<popupProps>({
     message: "",
     severity: "info",
@@ -35,7 +38,7 @@ const Connector = ({ handleCancel }: ConnectorProps) => {
   console.log({ provider });
 
   const connectWalletHandler = useCallback(() => {
-    setLoading(true);
+    handleLoading(true);
     // @ts-ignore
     if (window.ethereum && !account) {
       // @ts-ignore
@@ -76,7 +79,7 @@ const Connector = ({ handleCancel }: ConnectorProps) => {
         });
 
       setTimeout(() => {
-        setLoading(false);
+        handleLoading(false);
       }, 1000);
 
       // @ts-ignore
@@ -87,7 +90,7 @@ const Connector = ({ handleCancel }: ConnectorProps) => {
         message: "Please install MetaMask browser extension to interact",
       });
     }
-  }, [account, dispatch]);
+  }, [account, dispatch, handleLoading]);
 
   useEffect(() => {
     if (account && provider) {

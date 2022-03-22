@@ -1,9 +1,10 @@
+import { NoDataProps } from "@/components/types";
 import { DetailsProps } from "@/container/wallet/types";
 import { Typography } from "@mui/material";
 
-const Details = ({
+const NoData = ({
   nullMessage = 'Wallet not connected. Please click the "Connect" button to connect to wallet.',
-}: DetailsProps) => {
+}: NoDataProps) => {
   return (
     <div className="flex relative">
       <Typography variant="body1" color="secondary">
@@ -13,4 +14,4 @@ const Details = ({
   );
 };
 
-export default Details;
+export default NoData;

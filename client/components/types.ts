@@ -10,3 +10,7 @@ export interface PopperProps {
   popup: popupProps;
   handlePopup: () => void;
 }
+
+export interface NoDataProps {
+  nullMessage?: string;
+}

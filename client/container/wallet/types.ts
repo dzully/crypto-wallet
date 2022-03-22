@@ -11,4 +11,6 @@ export interface DetailsProps {
 
 export interface ConnectorProps {
   handleCancel: MouseEventHandler<HTMLButtonElement>;
+  handleLoading: (param: boolean) => void;
+  loading: boolean;
 }
