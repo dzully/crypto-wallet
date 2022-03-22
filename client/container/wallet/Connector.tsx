@@ -11,8 +11,10 @@ import {
 } from "@/redux/reducer/wallet";
 import Popper from "@/components/Popper";
 import { popupProps } from "@/components/types";
+import { ConnectorProps } from "@/container/wallet/types";
 
-const Connector = () => {
+const Connector = ({ handleCancel }: ConnectorProps) => {
+  const [loading, setLoading] = useState<boolean>(false);
   const [popup, setPopup] = useState<popupProps>({
     message: "",
     severity: "info",
@@ -33,6 +35,7 @@ const Connector = () => {
   console.log({ provider });
 
   const connectWalletHandler = useCallback(() => {
+    setLoading(true);
     // @ts-ignore
     if (window.ethereum && !account) {
       // @ts-ignore
@@ -72,6 +75,10 @@ const Connector = () => {
           });
         });
 
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+
       // @ts-ignore
     } else if (!window.ethereum) {
       setPopup({
@@ -91,10 +98,6 @@ const Connector = () => {
     }
   }, [account, dispatch, provider]);
 
-  const handleCancel = () => {
-    console.log("handleCancel");
-  };
-
   const handlePopup = () => {
     setPopup({ ...popup, status: false });
   };
@@ -104,6 +107,7 @@ const Connector = () => {
       <ConnectorComponent
         handleClick={connectWalletHandler}
         handleCancel={handleCancel}
+        loading={loading}
       />
       <Popper popup={popup} handlePopup={handlePopup} />
     </>

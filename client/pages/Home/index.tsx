@@ -1,7 +1,7 @@
 import Viewer from "@/components/converter/Viewer";
 import Header from "@/components/header";
-import Connector from "@/container/home/Connector";
 import Display from "@/container/home/Display";
+import Wallet from "@/container/wallet";
 import type { NextPage } from "next";
 
 const Home: NextPage = () => (
@@ -10,7 +10,7 @@ const Home: NextPage = () => (
     <Viewer>
       <>
         <Display />
-        <Connector />
+        <Wallet />
       </>
     </Viewer>
   </div>

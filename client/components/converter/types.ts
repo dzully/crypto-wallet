@@ -6,6 +6,7 @@ export interface ConnectorProps {
   secondaryTitle?: string;
   handleClick: MouseEventHandler<HTMLButtonElement>;
   handleCancel: MouseEventHandler<HTMLButtonElement>;
+  loading?: boolean;
 }
 
 export interface ViewerProps {
