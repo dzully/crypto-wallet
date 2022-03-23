@@ -1,15 +1,15 @@
-import type { NextPage } from "next";
-import Head from "next/head";
+import type { NextPage } from 'next'
+import Head from 'next/head'
 import {
   createTheme,
   StyledEngineProvider,
   ThemeProvider,
-} from "@mui/material/styles";
-import { CacheProvider } from "@emotion/react";
-import createCache from "@emotion/cache";
-import { globalTheme } from "../utils/theme";
-import CssBaseline from "@mui/material/CssBaseline";
-import Home from "./home";
+} from '@mui/material/styles'
+import { CacheProvider } from '@emotion/react'
+import createCache from '@emotion/cache'
+import { globalTheme } from '../utils/theme'
+import CssBaseline from '@mui/material/CssBaseline'
+import Home from './home'
 
 const theme = createTheme({
   palette: {
@@ -19,18 +19,18 @@ const theme = createTheme({
       dark: globalTheme.dark,
     },
     secondary: {
-      light: "#ff7961",
-      main: "#f44336",
-      dark: "#ba000d",
-      contrastText: "#000",
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
     },
   },
-});
+})
 
 const cache = createCache({
-  key: "css",
+  key: 'css',
   prepend: true,
-});
+})
 
 const App: NextPage = () => {
   return (
@@ -38,6 +38,11 @@ const App: NextPage = () => {
       <Head>
         <title>Neptune Mutual</title>
         <meta name="description" content="Crypto wallet connector" />
+        <link
+          rel="shortcut icon"
+          href="/images/neptune.png"
+          type="image/x-icon"
+        />
       </Head>
 
       <StyledEngineProvider injectFirst>
@@ -49,7 +54,7 @@ const App: NextPage = () => {
         </CacheProvider>
       </StyledEngineProvider>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
