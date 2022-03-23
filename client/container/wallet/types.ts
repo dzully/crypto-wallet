@@ -14,3 +14,7 @@ export interface ConnectorProps {
   handleLoading: (param: boolean) => void;
   loading: boolean;
 }
+
+export interface DisconnectProps {
+  handleCancel: MouseEventHandler<HTMLButtonElement>;
+}

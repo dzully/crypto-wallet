@@ -1,35 +1,43 @@
-import { ConnectorProps } from "@/components/converter/types";
-import Button from "@mui/material/Button";
-import CircularProgress from "@mui/material/CircularProgress";
+import { ConnectorProps } from '@/components/converter/types'
+import Button from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const Connector = ({
-  primaryTitle = "connect",
-  secondaryTitle = "cancel",
+  primaryTitle = 'connect',
+  secondaryTitle = 'cancel',
   handleClick,
   handleCancel,
   loading = false,
+  mainButtonColor = 'primary',
 }: ConnectorProps) => (
   <div className="flex relative w-full">
     {!loading ? (
       <>
         <Button
           fullWidth
-          className="bg-[#0d162e]"
+          style={{
+            backgroundColor: mainButtonColor === 'primary' ? '#0d162e' : 'red',
+            color: mainButtonColor === 'primary' ? '' : 'white',
+          }}
           variant="contained"
-          color="primary"
+          color={mainButtonColor}
           onClick={handleClick}
         >
           {primaryTitle}
         </Button>
-        <div className="m-1" />
-        <Button
-          fullWidth
-          variant="outlined"
-          color="primary"
-          onClick={handleCancel}
-        >
-          {secondaryTitle}
-        </Button>
+        {secondaryTitle && secondaryTitle?.length > 0 ? (
+          <>
+            <div className="m-1" />
+            <Button
+              fullWidth
+              variant="outlined"
+              color="primary"
+              onClick={handleCancel}
+            >
+              {secondaryTitle}
+            </Button>
+          </>
+        ) : null}
       </>
     ) : (
       <div className="flex relative justify-center w-full">
@@ -37,6 +45,6 @@ const Connector = ({
       </div>
     )}
   </div>
-);
+)
 
-export default Connector;
+export default Connector

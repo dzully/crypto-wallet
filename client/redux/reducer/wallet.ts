@@ -30,9 +30,20 @@ export const converterSlice = createSlice({
     handleBalance: (state, action: PayloadAction<string>) => {
       state.balance = action.payload;
     },
+    handleDisconnect: (state) => {
+      state.provider = null;
+      state.account = "";
+      state.chainId = "";
+      state.balance = "";
+    },
   },
 });
 
-export const { handleAccount, handleChainId, handleBalance, handleProvider } =
-  converterSlice.actions;
+export const {
+  handleAccount,
+  handleChainId,
+  handleBalance,
+  handleProvider,
+  handleDisconnect,
+} = converterSlice.actions;
 export default converterSlice.reducer;
