@@ -1,20 +1,19 @@
 import type { NextPage } from "next";
-import { handleConverter } from "@/reducer/home_rdc";
+import { handleConverter } from "@/redux/reducer/converter";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux/store";
-import Converter from "../../components/converter";
 import { ChangeEvent, useCallback } from "react";
-import { listTextField } from "@/pages/Home/utils";
 import { formula, validate } from "@/utils/customFunction";
-import debounce from "lodash/debounce";
+import { listTextField } from "@/container/home/utils";
+import DisplayComponent from "@/components/converter/Display";
 
-const Home: NextPage = () => {
+const Display: NextPage = () => {
   const dispatch = useDispatch();
-  const homeState = useSelector((state: RootState) => state?.home);
-  const primaryCurrency = homeState?.primaryCurrency;
-  const primaryField = homeState?.primaryField;
-  const secondaryCurrency = homeState?.secondaryCurrency;
-  const secondaryField = homeState?.secondaryField;
+  const converterState = useSelector((state: RootState) => state?.converter);
+  const primaryCurrency = converterState?.primaryCurrency;
+  const primaryField = converterState?.primaryField;
+  const secondaryCurrency = converterState?.secondaryCurrency;
+  const secondaryField = converterState?.secondaryField;
   const currencyModel = `${primaryCurrency}_${secondaryCurrency}`;
 
   const handleChange = useCallback(
@@ -35,16 +34,16 @@ const Home: NextPage = () => {
     [currencyModel, dispatch, primaryCurrency, secondaryCurrency]
   );
 
-  const displayProps = {
-    handleChange,
-    listTextField,
-    primaryCurrency,
-    primaryField,
-    secondaryCurrency,
-    secondaryField,
-  };
-
-  return <Converter displayProps={displayProps} />;
+  return (
+    <DisplayComponent
+      handleChange={handleChange}
+      listTextField={listTextField}
+      primaryCurrency={primaryCurrency}
+      primaryField={primaryField}
+      secondaryCurrency={secondaryCurrency}
+      secondaryField={secondaryField}
+    />
+  );
 };
 
-export default Home;
+export default Display;

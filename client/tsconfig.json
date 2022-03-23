@@ -19,6 +19,7 @@
       "@/components/*": ["components/*"],
       "@/redux/*": ["redux/*"],
       "@/utils/*": ["utils/*"],
+      "@/container/*": ["container/*"],
       "@/reducer/*": ["redux/reducer/*"],
       "@/pages/*": ["pages/*"],
       "@/styles/*": ["styles/*"]
